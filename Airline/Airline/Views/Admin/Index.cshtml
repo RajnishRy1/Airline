@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Airline.Models.Bookings>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+[@Html.ActionLink("Add Flight", "Add", "Admin")]
+<br />
+
+<h3>Bookings</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Flight Id
+            </th>
+            <th>
+                From
+            </th>
+            <th>
+                To
+            </th>
+            <th>
+                Seats
+            </th>
+            <th>
+                Date
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        if (item.Flag == 0)
+        {
+            <tr>
+                <td>
+                    @item.Firstname @item.Lastname
+                </td>
+                <td>
+                    @item.FlightId
+                </td>
+                <td>
+                    @item.From
+                </td>
+                <td>
+                    @item.To
+                </td>
+                <td>
+                    @item.Seats
+                </td>
+                <td>
+                    @item.Date
+                </td>
+            </tr>
+        }
+    }
+</table>
+[@Html.ActionLink("Pending Requests", "Pending", "Admin")]
+<br />
+[@Html.ActionLink("Flights", "Flights", "Admin")]
+<br />
+<br />
+@Html.ActionLink("Logout","Logout","Admin")

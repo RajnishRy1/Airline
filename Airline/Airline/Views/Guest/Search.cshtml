@@ -1,0 +1,55 @@
+﻿@model Airline.ViewModel.FlightViewModel
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Flight Id
+            </th>
+            <th>
+                From
+            </th>
+            <th>
+                To
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Seats Available
+            </th>
+        </tr>
+    </thead>
+    @foreach (Airline.Models.Flight item in Model.Flight)
+    {
+         
+        item.TempId = Model.User.UsersId;
+        
+        <tr>
+            <td>
+                @item.FlightId
+            </td>
+            <td>
+                @item.From
+            </td>
+            <td>
+                @item.To
+            </td>
+            <td>
+                @item.Time
+            </td>
+            <td>
+                @item.Seats
+            </td>
+            <td>
+                @Html.ActionLink("Book", "Book", "Guest",item,null)
+            </td>
+        </tr>
+    }
+</table>
+    
+

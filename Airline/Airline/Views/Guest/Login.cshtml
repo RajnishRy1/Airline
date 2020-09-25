@@ -1,0 +1,28 @@
+﻿@model Airline.ViewModel.GuestViewModel
+
+@using (Html.BeginForm("Search", "Guest"))
+{
+    <div class="form-group">
+       @Html.HiddenFor(m=>m.Usr.UsersId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Search.Type)
+        @Html.DropDownListFor(m => m.Search.Type,
+       new List<SelectListItem> {
+           new SelectListItem { Text="Domestic",Value="Domestic"},
+           new SelectListItem { Text = "International", Value = "International" }
+       }, "Select Type", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Search.Date)
+        @Html.TextBoxFor(m => m.Search.Date, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+}
+<br />
+<br />
+@Html.ActionLink("My Bookings", "Bookings", "Guest",Model.Usr,null)
+<br />
+[@Html.ActionLink("Logout", "Logout", "Guest")]

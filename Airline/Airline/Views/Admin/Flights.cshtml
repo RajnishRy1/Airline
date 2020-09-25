@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Airline.Models.Flight>
+
+@{
+    ViewBag.Title = "Flights";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Flights</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.To)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Seats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FlightId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.From)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.To)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+  
+    <td>
+        @Html.DisplayFor(modelItem => item.Seats)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.FlightId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.FlightId })
+    </td>
+</tr>
+}
+</table>
+@Html.ActionLink("Index","Index","Admin")

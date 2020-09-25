@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Airline.Models.Bookings>
+
+@{
+    ViewBag.Title = "Bookings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bookings</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.To)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Flag == 1)
+        {
+            <tr>
+                <td>
+                    @item.Firstname @item.Lastname
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlightId)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.From)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.To)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.ActionLink("Approve","Approve","Admin", item, null) |
+                    @Html.ActionLink("Reject","Reject","Admin",item,null)
+                </td>
+            </tr>
+        }
+
+    }
+
+</table>
+@Html.ActionLink("Logout","Logout","Admin")
